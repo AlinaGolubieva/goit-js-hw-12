@@ -20,29 +20,29 @@ export function createGallery(images) {
         downloads,
       }) => `
       <li class="gallery-item">
-  <a href="${largeImageURL}">
-    <img class="gallery-image" src="${webformatURL}" alt="${tags}" loading="lazy" />
-  </a>
-  <div class="info">
-    <div class="info-item">
-      <span class="title">Likes👍</span>
-      <span class="value">${likes}</span>
-    </div>
-    <div class="info-item">
-      <span class="title">Views👀</span>
-      <span class="value">${views}</span>
-    </div>
-    <div class="info-item">
-      <span class="title">Comments💬</span>
-      <span class="value">${comments}</span>
-    </div>
-    <div class="info-item">
-      <span class="title">Downloads⬇️</span>
-      <span class="value">${downloads}</span>
-    </div>
-  </div>
-</li>
-      `
+        <a href="${largeImageURL}">
+          <img class="gallery-image" src="${webformatURL}" alt="${tags}" loading="lazy" />
+        </a>
+        <div class="info">
+          <div class="info-item">
+            <span class="title">Likes👍</span>
+            <span class="value">${likes}</span>
+          </div>
+          <div class="info-item">
+            <span class="title">Views👀</span>
+            <span class="value">${views}</span>
+          </div>
+          <div class="info-item">
+            <span class="title">Comments💬</span>
+            <span class="value">${comments}</span>
+          </div>
+          <div class="info-item">
+            <span class="title">Downloads⬇️</span>
+            <span class="value">${downloads}</span>
+          </div>
+        </div>
+      </li>
+    `
     )
     .join('');
 
@@ -54,12 +54,12 @@ export function clearGallery() {
   gallery.innerHTML = '';
 }
 
-const loader = document.querySelector('.js-loader');
+const loaders = document.querySelectorAll('.js-loader');
 
 export function showLoader() {
-  loader.removeAttribute('hidden');
+  loaders.forEach(loader => loader.classList.remove('hidden'));
 }
 
 export function hideLoader() {
-  loader.setAttribute('hidden', '');
+  loaders.forEach(loader => loader.classList.add('hidden'));
 }

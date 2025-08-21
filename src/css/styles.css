@@ -1,4 +1,4 @@
-/**
+/* *
   |============================
   | include css partials with
   | default @import url()
@@ -64,9 +64,9 @@
 }
 
 button[type='submit'] {
-  display: flex; /* ставимо flex */
-  align-items: center; /* вирівнюємо текст і лоадер по центру */
-  justify-content: center; /* текст+лоадер по центру кнопки */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
   border-radius: 8px;
   border-color: inherit;
@@ -79,7 +79,8 @@ button[type='submit'] {
   border: none;
 }
 
-button[type='submit']:hover {
+button[type='submit']:hover,
+.load-more:hover {
   background: #6c8cff;
 }
 
@@ -91,7 +92,7 @@ button[type='submit']:hover {
   padding: 0;
   width: calc(3 * 360px + 2 * 24px);
   cursor: none;
-  margin: 0 auto;
+  margin: 0 auto 32px auto;
 }
 
 .gallery-item {
@@ -139,4 +140,21 @@ button[type='submit']:hover {
   line-height: 200%;
   letter-spacing: 0.04em;
   color: #2e2f42;
+}
+
+.load-more {
+  display: block;
+  margin: 0 auto 44px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #4e75ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.load-more.hidden {
+  display: none;
 }
