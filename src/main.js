@@ -7,23 +7,16 @@ import {
   clearGallery,
   showLoader,
   hideLoader,
+  showLoadMoreButton,
+  hideLoadMoreButton,
 } from './js/render-functions';
 
 const form = document.querySelector('form');
 const input = form.querySelector('input[name="search-text"]');
-const loadMoreBtn = document.querySelector('.load-more');
 
 let currentPage = 1;
 let currentQuery = '';
 const perPage = 15;
-
-function showLoadMore() {
-  loadMoreBtn.classList.remove('hidden');
-}
-
-function hideLoadMore() {
-  loadMoreBtn.classList.add('hidden');
-}
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
@@ -42,7 +35,7 @@ form.addEventListener('submit', async event => {
   currentQuery = enteredText;
   currentPage = 1;
   showLoader();
-  hideLoadMore();
+  hideLoadMoreButton();
 
   try {
     const data = await getImagesByQuery(currentQuery, currentPage, perPage);
@@ -60,7 +53,7 @@ form.addEventListener('submit', async event => {
     createGallery(data.hits);
 
     if (currentPage * perPage < data.totalHits) {
-      showLoadMore();
+      showLoadMoreButton();
     } else {
       iziToast.info({
         title: 'Info',
@@ -78,10 +71,11 @@ form.addEventListener('submit', async event => {
   }
 });
 
+const loadMoreBtn = document.querySelector('.load-more');
 loadMoreBtn.addEventListener('click', async () => {
   currentPage += 1;
   showLoader();
-  hideLoadMore();
+  hideLoadMoreButton();
 
   try {
     const data = await getImagesByQuery(currentQuery, currentPage, perPage);
@@ -99,7 +93,7 @@ loadMoreBtn.addEventListener('click', async () => {
     }
 
     if (currentPage * perPage < data.totalHits) {
-      showLoadMore();
+      showLoadMoreButton();
     } else {
       iziToast.info({
         title: 'Info',

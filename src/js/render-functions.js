@@ -55,11 +55,19 @@ export function clearGallery() {
 }
 
 const loaders = document.querySelectorAll('.js-loader');
-
 export function showLoader() {
   loaders.forEach(loader => loader.classList.remove('hidden'));
 }
 
 export function hideLoader() {
   loaders.forEach(loader => loader.classList.add('hidden'));
+}
+
+const loadMoreBtn = document.querySelector('.load-more');
+export function showLoadMoreButton() {
+  loadMoreBtn.classList.remove('hidden');
+}
+
+export function hideLoadMoreButton() {
+  loadMoreBtn.classList.add('hidden');
 }
